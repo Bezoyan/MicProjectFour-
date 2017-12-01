@@ -21,8 +21,9 @@ todoRouter.post('/', (req, res) => {
 
 todoRouter.delete('/:todo_id', (req, res) => {
   let todo = { _id : req.params.todo_id}
-  todoService.deletetodo().then(data => {
+  todoService.deletetodo(todo).then(data => {
     return res.send(data);
-})
+});
+});
 
 module.exports = todoRouter;

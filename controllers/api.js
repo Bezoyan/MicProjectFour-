@@ -1,3 +1,5 @@
+const todoApi = require('./../components/todo/api');
+
 class ApiV1 {
   initialize(app){
    app.use('/api/todo', todoApi);
