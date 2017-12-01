@@ -8,20 +8,21 @@ todoRouter.get('/', (req, res) => {
     });
 });
 
-UsersRouter.get('/login', (req, res) => {
-  res.render('login');
-})
-
-
-
-UsersRouter.post('/', (req, res) => {
+todoRouter.post('/', (req, res) => {
     let todo = {
       name: req.body.name,
       text: req.body.text,
     }
-    todoService.insertUsers(user).then(data => {
+    todoService.inserttodo(todo).then(data => {
       return res.render('index');
   });
 
 });
-module.exports = UsersRouter;
+
+todoRouter.delete('/:todo_id', (req, res) => {
+  let todo = { _id : req.params.todo_id}
+  todoService.deletetodo().then(data => {
+    return res.send(data);
+})
+
+module.exports = todoRouter;
